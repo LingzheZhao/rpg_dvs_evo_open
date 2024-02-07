@@ -69,6 +69,37 @@ Remark that this is **research** code, any fitness for a particular purpose is d
 ## Getting started
 This software depends on [ROS](https://www.ros.org/). Installation instructions can be found [here](http://wiki.ros.org/melodic/Installation/Ubuntu). We have tested this software on Ubuntu 18.04 and ROS Melodic.
 
+### Option 1. Use the Dockerfile
+
+You can use the [Dockerfile](./Dockerfile) to create an out-of-the-box environment to run this code base:
+
+1. Build the image
+   
+   ```sh
+   docker build -t evo .
+   ```
+2. Run
+
+    ```sh
+    xhost +
+    ```
+
+    then
+
+    ```sh
+    docker run -it --rm --net=host --ipc=host --gpus all \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY \
+        -e NVIDIA_VISIBLE_DEVICES=all -e NVIDIA_DRIVER_CAPABILITIES=all \
+        -v /path/to/datasets:/path/to/datasets \
+        evo
+    ```
+
+    > Note that you will need the [nvidia container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed in order to run Rviz.
+
+### Option 2. (Legacy) Build the project from scratch
+
+You can still build the project from scratch if you don't want to use Docker:
+
 1. Create and initialize a new catkin workspace if needed
 
         mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/
@@ -83,11 +114,7 @@ This software depends on [ROS](https://www.ros.org/). Installation instructions 
 
 3. Clone (and fix) dependencies
         
-        ./rpg_dvs_evo_open/install.sh [ros-version] # [ros-version]: melodic, ..
-
-    Substitute `[ros-version]` with your actual ROS distribution. For instance:
-
-        ./rpg_dvs_evo_open/install.sh melodic
+        ./rpg_dvs_evo_open/install.sh
 
     Make sure to install ROS and the commonly used packages (such as rviz, rqt, ..).
 
