@@ -14,6 +14,7 @@ sudo apt-get install \
     ros-melodic-image-view \
     ros-melodic-camera-info-manager \
     ros-melodic-image-geometry \
+    autoconf libtool \
     libfftw3-dev libfftw3-doc \
     libglew-dev \
     libopencv-dev \

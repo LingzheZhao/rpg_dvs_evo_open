@@ -9,11 +9,11 @@ repositories:
     version: master
   glog_catkin:
     type: git
-    url: https://github.com/zurich-eye/glog_catkin.git
+    url: https://github.com/ethz-asl/glog_catkin.git
     version: master
   gflags_catkin:
     type: git
-    url: https://github.com/zurich-eye/gflags_catkin.git
+    url: https://github.com/ethz-asl/gflags_catkin.git
     version: master
   cmake_external_project_catkin:
     type: git
