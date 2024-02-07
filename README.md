@@ -100,6 +100,17 @@ This software depends on [ROS](https://www.ros.org/). Installation instructions 
 
     Please refer to [this repo](https://github.com/uzh-rpg/rpg_dvs_ros) if there are issues with the driver installation (required for the live).
 
+    > Notes on building this repo with [osrf/ros:melodic-desktop-full](https://hub.docker.com/r/osrf/ros/tags?page=1&name=melodic):
+    >
+    > 1. [Project 'cv_bridge'/'image_geometry' can not find opencv](https://github.com/ros-perception/vision_opencv/issues/345):
+    >
+    >       Edit `/opt/ros/melodic/share/cv_bridge/cmake/cv_bridgeConfig.cmake` and `/opt/ros/melodic/share/image_geometry/cmake/image_geometryConfig.cmake`.
+    >
+    >       Change this line: `set(_include_dirs "include;/usr/include;/usr/include/opencv") `
+    >
+    >       to: `set(_include_dirs "include;/usr/include;/usr/include/opencv4")`
+
+
 4. Build the packages
     
         catkin build dvs_tracking

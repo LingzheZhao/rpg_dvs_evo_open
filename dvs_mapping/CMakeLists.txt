@@ -2,6 +2,7 @@ project(dvs_mapping)
 cmake_minimum_required(VERSION 2.8.3)
 
 find_package(catkin_simple REQUIRED)
+find_package(OpenCV REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -32,7 +33,7 @@ cs_add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 ################################################################################
 
 cs_add_executable(dvs_mapping_ros src/dvs_mapping_ros.cpp)
-target_link_libraries(dvs_mapping_ros ${PROJECT_NAME})
+target_link_libraries(dvs_mapping_ros ${PROJECT_NAME} ${OpenCV_LIBS})
 
 
 cs_add_library(dvs_mapping_nodelet src/dvs_mapping_nodelet.cpp)
