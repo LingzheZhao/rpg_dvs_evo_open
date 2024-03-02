@@ -2,7 +2,7 @@
     <arg name="auto_trigger" default="true"/>
 
     <arg name="camera_name" default="replica" />
-    <arg name="bootstrap_image_topic" default="/cam0/image_raw" />
+    <arg name="bootstrap_image_topic" default="/events/image_raw" />
     <arg name="events_topic" default="/cam0/events" />
 
     <param name="camera_name" value="$(arg camera_name)" />
